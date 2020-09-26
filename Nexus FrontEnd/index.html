@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  <meta name="description" content="main page">
+  <meta name="author" content="nexus">
+ <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="text-gray-700 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <img src="n2.png">
+    
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <a class="mr-5 hover:text-gray-900" href="index.html">Home</a>
+      <a class="mr-5 hover:text-gray-900" href="Services.html">Services</a>
+      <a class="mr-5 hover:text-gray-900" href="About.html">About</a>
+      <a class="mr-5 hover:text-gray-900" href="Contact.html">Contact</a>
+       <a class="mr-5 hover:text-gray-900" href="login.html">Login</a>
+    </nav>
+  </div>
+</header>
+
+<section class="container mx-auto px-2 p-8">
+<div class="py-8" style="background: linear-gradient(90deg, #33cccc 0%, #006699 100%)">
+  <div class="container m px-2">
+    <h2 class="text-xl font-bold mb-2 text-white"> Driving Growth with Innovation</h2>
+    <h3 class="text-xl mb-2 text-gray-200"> Excelling together Greater then ever.</h3>
+    <button class="bg-white font-bold rounded-full py-2 px-4 shadow-lg uppercase tracking-wider"> Explore more</button>
+  </div>
+</div>
+</section>
+
+<section class="text-gray-700">
+
+  <div class="container " style="margin-left: 5%;">
+    <div class="lg:w-3/5 md:w-1/2 md:pr-20 lg:pr-1 pr-1" style="float: left;display: inline-block;">
+      <h1 class="title-font font-medium text-2xl text-gray-900"></h1>
+      <p class="leading-relaxed mt-3">Software development is the process of conceiving, specifying, designing, programming, documenting, testing, and bug fixing involved in creating and maintaining applications, frameworks, or other software components. Software development is a process of writing and maintaining the source code, but in a broader sense, it includes all that is involved between the conception of the desired software through to the final manifestation of the software, sometimes in a planned and structured process. Therefore, software development may include research, new development, prototyping, modification, reuse, re-engineering, maintenance, or any other activities that result in software products.</p>
+    </div>
+    <style>
+@import url(https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css);
+</style>
+
+<div style="display: inline-block;">
+    <div class="w-full max-w-2xl">
+        <div class="-mx-2 md:flex">
+            <div class="w-full md:w-1/3 px-2">
+                <div class="rounded-lg shadow-sm mb-4">
+                    <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
+                        <div class="px-3 pt-8 pb-10 text-center relative z-10">
+                            <h4 class="text-sm uppercase text-gray-500 leading-tight">Users</h4>
+                            <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">3,682</h3>
+                            <p class="text-xs text-green-500 leading-tight">▲ 57.1%</p>
+                        </div>
+                        <div class="absolute bottom-0 inset-x-0">
+                            <canvas id="chart1" height="70"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/3 px-2">
+                <div class="rounded-lg shadow-sm mb-4">
+                    <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
+                        <div class="px-3 pt-8 pb-10 text-center relative z-10">
+                            <h4 class="text-sm uppercase text-gray-500 leading-tight">Subscribers</h4>
+                            <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">11,427</h3>
+                            <p class="text-xs text-red-500 leading-tight">▼ 42.8%</p>
+                        </div>
+                        <div class="absolute bottom-0 inset-x-0">
+                            <canvas id="chart2" height="70"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/3 px-2">
+                <div class="rounded-lg shadow-sm mb-4">
+                    <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
+                        <div class="px-3 pt-8 pb-10 text-center relative z-10">
+                            <h4 class="text-sm uppercase text-gray-500 leading-tight">Presence</h4>
+                            <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">8,028</h3>
+                            <p class="text-xs text-green-500 leading-tight">▲ 8.2%</p>
+                        </div>
+                        <div class="absolute bottom-0 inset-x-0">
+                            <canvas id="chart3" height="70"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script>
+const chartOptions = {
+    maintainAspectRatio: false,
+    legend: {
+        display: false,
+    },
+    tooltips: {
+        enabled: false,
+    },
+    elements: {
+        point: {
+            radius: 0
+        },
+    },
+    scales: {
+        xAxes: [{
+            gridLines: false,
+            scaleLabel: false,
+            ticks: {
+                display: false
+            }
+        }],
+        yAxes: [{
+            gridLines: false,
+            scaleLabel: false,
+            ticks: {
+                display: false,
+                suggestedMin: 0,
+                suggestedMax: 10
+            }
+        }]
+    }
+};
+//
+var ctx = document.getElementById('chart1').getContext('2d');
+var chart = new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: [1, 2, 1, 3, 5, 4, 7],
+        datasets: [
+            {
+                backgroundColor: "rgba(101, 116, 205, 0.1)",
+                borderColor: "rgba(101, 116, 205, 0.8)",
+                borderWidth: 2,
+                data: [1, 2, 1, 3, 5, 4, 7],
+            },
+        ],
+    },
+    options: chartOptions
+});
+//
+var ctx = document.getElementById('chart2').getContext('2d');
+var chart = new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: [2, 3, 2, 9, 7, 7, 4],
+        datasets: [
+            {
+                backgroundColor: "rgba(246, 109, 155, 0.1)",
+                borderColor: "rgba(246, 109, 155, 0.8)",
+                borderWidth: 2,
+                data: [2, 3, 2, 9, 7, 7, 4],
+            },
+        ],
+    },
+    options: chartOptions
+});
+//
+var ctx = document.getElementById('chart3').getContext('2d');
+var chart = new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: [2, 5, 1, 3, 2, 6, 7],
+        datasets: [
+            {
+                backgroundColor: "rgba(246, 153, 63, 0.1)",
+                borderColor: "rgba(246, 153, 63, 0.8)",
+                borderWidth: 2,
+                data: [2, 5, 1, 3, 2, 6, 7],
+            },
+        ],
+    },
+    options: chartOptions
+});
+</script>
+
+
+ </div>
+ </div>
+</section>
+<br>
+
+<div style="clear: both;"></div>
+
+<section class="py-12">
+        <div class="container mx-auto">
+            <div>
+                <h1 class="text-2xl font-black text-gray-900 pb-6 px-6 md:px-12" style="margin-left: 40%;">
+                    Events Happening
+                </h1>
+            </div>
+            <div class="flex flex-wrap px-6">
+                <div class="w-full lg:w-1/2   md:px-4 lg:px-6 py-5">
+                    <div class="bg-white hover:shadow-xl">
+                        <div class="">
+                            <img src="ui.png" alt=""
+                               class="h-56 w-full border-white border-8 hover:opacity-25">
+                        </div>
+                        <div class="px-4 py-4 md:px-10">
+                            <h1 class="font-bold text-lg">
+                                UI-UX Concepts Hackathon
+                            </h1>
+                            <p class="py-4">
+                               UI Developer stands for User Interface Design, a technology-focused role that seeks to create digital software that entices the user into a seamless interaction between human and computer. 
+                            </p>
+                            <div class="flex flex-wrap pt-8">
+                                <div class="w-full md:w-1/3 text-sm font-medium">
+                                    September 28,2020
+                                </div>
+                                <div class="2/3">
+                                    <div class="text-sm font-medium">
+                                        SHARE:
+                                        <a href="" class="text-blue-700 px-1 ">
+                                            FACEBOOk
+                                        </a>
+                                        <a href="" class="text-blue-500 px-1 ">
+                                            TWITTER
+                                        </a>
+                                        <a href="" class="text-red-600 px-1 ">
+                                            GOOGLE+
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2  md:px-4 lg:px-6 py-5">
+                    <div class="bg-white hover:shadow-xl">
+                        <div class="">
+                            <img src="fs.png" alt=""
+                                class="h-56 w-full border-white border-8 hover:opacity-25">
+                        </div>
+                        <div class="px-4 py-4 md:px-10">
+                            <h1 class="font-bold text-lg">
+                                Fullstack devloper Hackathon
+                            </h1>
+                            <p class="py-4">
+                                A full-stack web developer is an excellent example of this model as the developer has general knowledge across a wide breadth of technologies and platforms as well as in-depth experience and specialization in a couple of those concepts. For the most part, there are two general fields that make up a full-stack developer’s skillset: front-end development and back-end development.
+                            </p>
+                            <div class="flex flex-wrap pt-8">
+                                <div class="w-full md:w-1/3 text-sm font-medium">
+                                    September 1,2020
+                                </div>
+                                <div class="md:2/3">
+                                    <div class="text-sm font-medium">
+                                        SHARE:
+                                        <a href="" class="text-blue-700 px-1 ">
+                                            FACEBOOk
+                                        </a>
+                                        <a href="" class="text-blue-500 px-1 ">
+                                            TWITTER
+                                        </a>
+                                        <a href="" class="text-red-600 px-1 ">
+                                            GOOGLE+
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+<section class="text-gray-700 body-font">
+  <div class="container px-2 py-7 mx-auto">
+    <div >
+      </div>
+    <div class="flex flex-wrap -m-4 text-center">
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+            <path d="M8 17l4 4 4-4m-4-5v9"></path>
+            <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
+          </svg>
+          <h2 class="title-font font-medium text-3xl text-gray-900">2.7K</h2>
+          <p class="leading-relaxed">Downloads</p>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+          </svg>
+          <h2 class="title-font font-medium text-3xl text-gray-900">1.3K</h2>
+          <p class="leading-relaxed">Customers</p>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+            <path d="M3 18v-6a9 9 0 0118 0v6"></path>
+            <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
+          </svg>
+          <h2 class="title-font font-medium text-3xl text-gray-900">74</h2>
+          <p class="leading-relaxed">Files</p>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <h2 class="title-font font-medium text-3xl text-gray-900">46</h2>
+          <p class="leading-relaxed">Projects</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="text-gray-700 body-font">
+  <div class="container px-2 py-8 mx-auto">
+    <div class="flex flex-wrap md:text-left text-center order-first">
+      <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+        <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <nav class="list-none mb-10">
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">First Link</a>
+          </li>
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+          </li>
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+          </li>
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+          </li>
+        </nav>
+      </div>
+      <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+        <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <nav class="list-none mb-10">
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">First Link</a>
+          </li>
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+          </li>
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+          </li>
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+          </li>
+        </nav>
+      </div>
+      <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+        <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <nav class="list-none mb-10">
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">First Link</a>
+          </li>
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+          </li>
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+          </li>
+          <li>
+            <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+          </li>
+        </nav>
+      </div>
+      <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+        <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">SUBSCRIBE</h2>
+        <div class="flex xl:flex-no-wrap md:flex-no-wrap lg:flex-wrap flex-wrap justify-center md:justify-start">
+          <input class="w-40 sm:w-auto bg-gray-100 rounded xl:mr-4 lg:mr-0 sm:mr-4 mr-2 border border-gray-400 focus:outline-none focus:border-indigo-500 text-base py-2 px-4" placeholder="Placeholder" type="text">
+          <button class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Submit</button>
+        </div>
+        <p class="text-gray-500 text-sm mt-2 md:text-left text-center">GET yourself subscribed
+          <br class="lg:block hidden">Don't miss any important update
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="bg-gray-200">
+    <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+      <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="ml-3 text-xl">Nexus</span>
+      </a>
+      <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">© 2020 Nexus —
+        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@Nexus</a>
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <a class="text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+            <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+          </svg>
+        </a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
